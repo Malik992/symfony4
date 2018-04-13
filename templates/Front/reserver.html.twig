@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+{% block nav %}
+<nav class="gtco-nav " role="navigation" style="background:black">
+		<div class="gtco-container">
+
+			<div class="row">
+				<div class="col-sm-4 col-xs-12 ">
+					<div id="gtco-logo"><a href="{{path('searchBien')}}">Immobilier De LUXE <em>.</em></a></div>
+				</div>
+				<div class="col-xs-8 text-right menu-1">
+					<ul>
+						<li><a href="destination.html">Destination</a></li>
+						<li class="has-dropdown">
+							<a href="#">Nos Agences</a>
+							<ul class="dropdown">
+								<li><a href="{{path('Almadie')}}">Almadie</a></li>
+								<li><a href="#">Golf</a></li>
+								<li><a href="{{path('Mariste')}}">Mariste</a></li>
+								<li><a href="#">Dakar</a></li>
+							</ul>
+						</li>
+						<li><a href="{{path('resultat')}}">Nos Biens</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</nav>
+  {% endblock %}
+
+{% block body %}
+			<div class="container">
+    <h1 style="font-family:; color:grey"> Votre réservation a été prise en charge</h1>
+
+    
+</div>
+	        {% endblock %}
+	

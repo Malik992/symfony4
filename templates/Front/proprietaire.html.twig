@@ -1,0 +1,187 @@
+{% extends "base.html.twig" %}
+{% block nav %}
+ 
+ <style>
+.rower{
+   margin-top:200px;
+}
+</style>
+<nav class="gtco-nav " role="navigation" style="background:black">
+		<div class="gtco-container">
+			
+			<div class="row">
+				<div class="col-sm-4 col-xs-12 ">
+					<div id="gtco-logo"><a href="{{path('searchBien')}}"><em>Immobilier De LUXE </em></a></div>
+				</div>
+				<div class="col-xs-8 text-right menu-1">
+					<ul>
+						<li><a href="destination.html">Destination</a></li>
+						<li class="has-dropdown">
+							<a href="#">Nos Agences</a>
+							<ul class="dropdown">
+								<li><a href="{{path('Almadie')}}">Almadie</a></li>
+								<li><a href="#">Golf</a></li>
+								<li><a href="{{path('Mariste')}}">Mariste</a></li>
+								<li><a href="#">Dakar</a></li>
+							</ul>
+						</li>
+						<li><a href="{{path('resultat')}}">Nos Biens</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>	
+				</div>
+			</div>
+			
+		</div>
+	</nav>
+    <div class="row rower">
+  <form name="bien" method="post" id="new-bien-form" class="form-horizontal  new-form" data-view="new" data-entity="Bien" data-entity-id="">
+    <input type="hidden" name="referer" value=""/>    
+        <div class="row">
+                        <div class="col-xs-12 ">
+                      
+                <div class="form-group  field-text">
+                <label class="col-sm-2 control-label required" for="bien_nombien">Nom du Bien</label>
+                <div class="col-sm-10">
+                <input type="text" id="bien_nombien" name="nom" required="required" class="form-control" />
+                </div>
+                </div>
+            </div>
+                    <div class="col-xs-12 ">
+                        <div class="form-group  field-textarea">
+                        <label class="col-sm-2 control-label required" for="bien_description">Description</label>
+                        <div class="col-sm-10">
+                            <textarea id="bien_description" name="description" required="required" class="form-control"></textarea>
+                         </div>
+                </div>
+            </div>
+                    <div class="col-xs-12 ">
+                        <div class="form-group  field-integer">
+                        <label class="col-sm-2 control-label required" for="bien_prix_loc">Montant_Location</label>
+                        <div class="col-sm-10">
+                        <input type="number" id="bien_prix_loc" name="montantvoulu" required="required" class="form-control" />
+                     </div>
+                </div>
+            </div>
+              
+               
+                    <div class="col-xs-12 ">
+                        <div class="form-group  field-integer">
+                        <label class="col-sm-2 control-label required" for="bien_idparentbien">Parent_Bien</label>
+                        <div class="col-sm-10">
+                        <input type="number" id="bien_idparentbien" name="idparent" required="required" class="form-control" />
+                    </div>
+                </div>
+            </div>
+                    <div class="col-xs-12 ">
+                        <form action="#"method="post">
+                <div class="form-group  ">
+                <label class="col-sm-2 control-label" for="bien_localite">Localite</label>
+                <div class="col-sm-10">
+                <select id="bien_localite" name="localite"  class="form-control">
+                     
+                     {% for localite in localites %}
+                    <option value="{{ localite.id }}">{{ localite.libelleloca }}</option>
+                    {% endfor %}
+                  </select>
+                  </div>
+                  </div>
+                  </form>
+            </div>
+                    <div class="col-xs-12 ">
+                   
+                <div class="form-group  field-entity">
+                <label class="col-sm-2 control-label" for="bien_typebien">Type de Bien</label>
+                <div class="col-sm-10">
+                <select id="bien_typebien" name="typebien" data-widget="select2" class="form-control">
+               
+                    {% for type in types %}              
+                 <option value="{{ type.id }}"> {{type.libelletype}} </option>
+                     {% endfor %}
+             
+               </div>
+               </div>
+              
+            </div>
+                   
+    <input type="hidden" id="bien" name="bien" value="" />
+    
+                            <div class="col-md-12 portlets">
+                                <!-- Your awesome content goes here -->
+                                <div class="m-b-30">
+                                    <form action="#"method="post" class="dropzone" id="dropzone">
+                                      <div class="fallback">
+                                        <input name="file" type="file" multiple="multiple" >
+                                      </div>
+                                    </form>
+                                </div>
+                            </div> 
+                            {# formulaire proprietaire   #}
+                         <div class="col-xs-12 ">                      
+                            <div class="form-group  field-text">
+                            <label class="col-sm-2 control-label required" for="bien_nombien">NIN</label>
+                            <div class="col-sm-10">
+                            <input type="text" id="bien_nombien" name="numpiece" required="required" class="form-control" />
+                            </div>
+                            </div>
+                    </div>   
+            <div class="col-xs-12 ">
+                      
+                     <div class="form-group  field-text">
+                            <label class="col-sm-2 control-label required" for="bien_nombien">Nom & Prénom</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="bien_nombien" name="nomcomplet" required="required" class="form-control" />
+                        </div>
+                            </div>
+            </div> 
+             <div class="col-xs-12 ">
+                      
+                     <div class="form-group  field-text">
+                            <label class="col-sm-2 control-label required" for="bien_nombien">Adresse</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="bien_nombien" name="adressepro" required="required" class="form-control" />
+                        </div>
+                            </div>
+            </div> 
+             <div class="col-xs-12 ">
+                      
+                     <div class="form-group  field-text">
+                            <label class="col-sm-2 control-label required" for="bien_nombien">Tel</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="bien_nombien" name="telpro" required="required" class="form-control" />
+                        </div>
+                            </div>
+            </div> 
+             <div class="col-xs-12 ">
+                      
+                     <div class="form-group  field-text">
+                            <label class="col-sm-2 control-label required" for="bien_nombien">Code_Banque</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="bien_nombien" name="codebanque" required="required" class="form-control" />
+                        </div>
+                            </div>
+            </div> 
+             <div class="col-xs-12 ">
+                      
+                     <div class="form-group  field-text">
+                            <label class="col-sm-2 control-label required" for="bien_nombien">Adresse_Email</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="bien_nombien" name="emailpro" required="required" class="form-control" />
+                        </div>
+                            </div>
+            </div> 
+
+                       
+      <div class="row">
+        <div class="col-xs-12 form-actions">
+            <div class="form-group">
+                <div id="form-actions-row">        
+                    <button type="submit" name="submit"class="btn btn-primary action-save" style="margin-left:90%;">
+                    <i class="fa fa-save"></i> Enregistrer
+                    </button>
+                 </div>
+            </div>
+    </div>
+    </div>
+   </div> 
+   
+        {% endblock %}

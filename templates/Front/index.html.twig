@@ -1,0 +1,200 @@
+{% extends "base.html.twig" %}
+
+{% block title %}FrontController:index{% endblock %}
+
+
+
+	{% block nav %}
+    <div class="gtco-loader"></div>
+
+	<div id="page">
+	<!-- <div class="page-inner"> -->
+	<nav class="gtco-nav" role="navigation">
+		<div class="gtco-container">
+			
+			<div class="row">
+				<div class="col-sm-4 col-xs-12">
+					<div id="gtco-logo"><a href="{{path('index')}}"><em>Immobilier De LUXE </em></a></div>
+				</div>
+				<div class="col-xs-8 text-right menu-1">
+					<ul>
+						<li><a href="{{path('SavePro')}}">Placer vos Annonces</a></li>
+						<li class="has-dropdown">
+							<a href="#">Autres</a>
+							<ul class="dropdown">
+								<li><a href="{{path('Almadie')}}">Almadie</a></li>
+								<li><a href="{{path('Mariste')}}">Mariste</a></li>
+							</ul>
+						</li>
+						<li><a href="{{path('reservation')}}">Nos Biens</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>	
+				</div>
+			</div>
+			
+		</div>
+	</nav>
+	<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url({{asset('image/img1.jpg')}})">
+		<div class="overlay"></div>
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-12 col-md-offset-0 text-left">
+					
+
+					<div class="row row-mt-15em">
+						<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
+							<h1>Nos meilleurs Villa pour un logement de Luxe?</h1>	
+						</div>
+						
+						<div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
+						
+							<div class="form-wrap">
+								<div class="tab">
+									
+									<div class="tab-content">
+										<div class="tab-content-inner active" data-content="signup">
+											<h3>Recherche</h3>
+											<form action="#"method="post">
+												<div class="row form-group">
+													<div class="col-md-12">
+														<label for="fullname">Prix Location</label>
+														<input type="number" id="fullname" class="form-control" name="prix_loc">
+													</div>
+												</div>
+												<div class="row form-group">
+													<div class="col-md-12">
+														<label for="activities">Localite</label>
+														<select name="localite" id="activities" class="form-control">
+															 {% for localite in localites %}
+                                                                 <option value="{{ localite.id }}">{{ localite.libelleloca }}</option>
+                                                             {% endfor %}
+														</select>
+													</div>
+												</div>
+												<div class="row form-group">
+													<div class="col-md-12">
+														<label for="destination">Type de Bien</label>
+														<select name="typebien" id="destination" class="form-control">
+															 {% for type in types %}              
+                                                                 <option value="{{ type.id }}"> {{type.libelletype}} </option>
+                                                             {% endfor %}
+														</select>
+													</div>
+												</div>
+												
+											
+
+												<div class="row form-group">
+													<div class="col-md-12">
+														<input type="submit" name="submit"class="btn btn-primary btn-block" value="Rechercher">
+													</div>
+												</div>
+											</form>	
+										</div>
+
+										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+							
+					
+				</div>
+			</div>
+		</div>
+	</header>
+{% endblock %}
+
+            {% block body %}
+			
+
+        {% for bien in biens %}
+     
+           <div class="col-lg-4 col-md-4 col-sm-6">
+					<a href="{{ asset('image/')}}{{ bien.images[0].image }}" class="fh5co-card-item image-popup">
+						<figure>
+							<div class="overlay"><i class="ti-plus"></i></div>
+							<img src="{{ asset('image/')}}{{ bien.images[0].image }}" alt="Image" class="img-responsive">
+						</figure>
+						<div class="fh5co-text">
+							<h2>{{ bien.typebien.libelletype}}</h2>
+							<p>{{ bien.prix_loc }}, {{ bien.localite.libelleloca }}..</p>
+							<p><a  href="{{path('reserverBien', {'id':bien.id})}}" class="btn btn-primary">Détail</a></p>
+						</div>
+					</a>
+				</div>     
+
+             {% endfor %}
+      
+	        {% endblock %}
+	
+{% block footer %}
+	<footer id="gtco-footer" role="contentinfo">
+		<div class="gtco-container">
+			<div class="row row-p	b-md">
+
+				<div class="col-md-4">
+					<div class="gtco-widget">
+						<h3>A propos de Nous</h3>
+						<p>	Immobilier de Luxe est une agence immobilier siégée à Amitier 3 ,mais pratiquement on a beaucoup d'agence .Rien que pour vous faciliter la vie </p></div>
+				</div>
+
+				<div class="col-md-2 col-md-push-1">
+					<div class="gtco-widget">
+						<h3>Destination</h3>
+						<ul class="gtco-footer-links">
+							<li><a href="#">Almadie</a></li>
+								<li><a href="#">Golf</a></li>
+								<li><a href="#">Mariste</a></li>
+								<li><a href="#">Dakar</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-md-2 col-md-push-1">
+					<div class="gtco-widget">
+						<h3>Hotels</h3>
+						<ul class="gtco-footer-links">
+							<li><a href="#">Luxe Hotel</a></li>
+							<li><a href="#">Italy 5 Star hotel</a></li>
+							<li><a href="#">Dubai Hotel</a></li>
+							<li><a href="#">Deluxe Hotel</a></li>
+							<li><a href="#">BoraBora Hotel</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-md-push-1">
+					<div class="gtco-widget">
+						<h3>Get In Touch</h3>
+						<ul class="gtco-quick-contact">
+							<li><a href="#"><i class="icon-phone"></i> +221 33 825 23 23</a></li>
+							<li><a href="#"><i class="icon-mail2"></i> immobilierluxio@gmail.com</a></li>
+							<li><a href="#"><i class="icon-chat"></i> Live Chat</a></li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="row copyright">
+				<div class="col-md-12">
+					<p class="pull-left">
+						<small class="block">&copy; Immobilier de Luxe for ever.</small> 
+						{# <small class="block">Designed by <a href="http://GetTemplates.co/" target="_blank">GetTemplates.co</a> Demo Images: <a href="http://unsplash.com/" target="_blank">Unsplash</a></small> #}
+					</p>
+					<p class="pull-right">
+						<ul class="gtco-social-icons pull-right">
+							<li><a href="#"><i class="icon-twitter"></i></a></li>
+							<li><a href="#"><i class="icon-facebook"></i></a></li>
+							<li><a href="#"><i class="icon-linkedin"></i></a></li>
+							<li><a href="#"><i class="icon-dribbble"></i></a></li>
+						</ul>
+					</p>
+				</div>
+			</div>
+
+		</div>
+	</footer>
+{% endblock %}

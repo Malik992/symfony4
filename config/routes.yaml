@@ -1,0 +1,23 @@
+index:
+   path: /index
+   controller: App\Controller\FrontController::index
+SavePro:
+    path:     /bien/pro
+    controller: App\Controller\FrontController::SavePro
+# reservation proprietaire
+Almadie:
+    path:     /bien/almadie
+    controller: App\Controller\FrontController::almadie
+Mariste:
+    path:     /bien/mariste
+    controller: App\Controller\FrontController::mariste
+reservation:
+    path:     /bien/reserver_bien
+    controller: App\Controller\FrontController::reservation
+# reservation prise en charge
+reserverBien:
+    path:     /front/bien/reserver/{id}
+    controller: App\Controller\FrontController::reserverBien
+    requirements:
+        id: \d+
+        # reserver avec formulaire

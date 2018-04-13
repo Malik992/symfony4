@@ -1,0 +1,104 @@
+{% extends "base.html.twig" %}
+
+{% block title %}GSTImmobilierBundle:Front:reserver{% endblock %}
+{% block nav %}
+<nav class="gtco-nav " role="navigation" style="background:black">
+		<div class="gtco-container">
+
+			<div class="row">
+				<div class="col-sm-4 col-xs-12 ">
+					<div id="gtco-logo"><a href="{{path('searchBien')}}">Immobilier De LUXE <em>.</em></a></div>
+				</div>
+				<div class="col-xs-8 text-right menu-1">
+					<ul>
+						<li><a href="destination.html">Destination</a></li>
+						<li class="has-dropdown">
+							<a href="#">Nos Agences</a>
+							<ul class="dropdown">
+								<li><a href="{{path('Almadie')}}">Almadie</a></li>
+								<li><a href="#">Golf</a></li>
+								<li><a href="{{path('Mariste')}}">Mariste</a></li>
+								<li><a href="#">Dakar</a></li>
+							</ul>
+						</li>
+						<li><a href="{{path('resultat')}}">Nos Biens</a></li>
+						<li><a href="contact.html">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</nav>
+
+  <style>
+.form{
+    width:500px;
+  }
+
+  .rower{
+    display:flex;
+    flex-direction:row;
+    margin-top:150px;
+  }
+  .rowere{
+    display:flex;
+    flex-direction:row;
+
+  }
+  </style>
+     <div class="row rower">
+           <div class="col-lg-4 col-md-4 col-sm-6"  style="width:400px; margin-left:100px;heigth:600px;">
+					    <a href="{{ asset('image/')}}{{ bien.images[0].image }}" class="fh5co-card-item image-popup">
+					<div id="myCarousel" class="carousel slide" data-ride="carousel">
+	  <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="{{ asset('image/')}}{{ bien.images[0].image }}" alt="Image" style="height:400px;width:1000px;">
+
+      </div>
+
+          {% for image  in bien.images %}
+						 <div class="item">
+						  	<img src="{{ asset('image/')}}{{ image.image }}" alt="Image" class="img-responsive"style="height:400px;width:1000px;" >
+            </div>
+
+				 {% endfor %}
+                  </div>
+                  </div>
+					</figure>
+
+            		</a>
+                </div>
+                 <div class="col-lg-4 col-md-4 col-sm-6" >
+						<div class="fh5co-text">
+							<h2>{{ bien.typebien.libelletype}}</h2>
+              <p><b>Prix de la localtion:</b>{{ bien.prix_loc }}Fcfa,</p>
+               <p><b>Localite:</b> {{bien.localite.libelleloca}}</p>
+							<pre> {{ bien.description }}..</pre>
+
+						</div>
+			</div>
+
+       </div>
+      {% endblock %}
+
+        {% block body %}
+        <div class="row rowere"style="margin-left:300px;">
+        <div class="card"style="background:inherty;">
+          <div class="card-header"style="background:">
+
+          </div>
+          <div class="card-body">
+            <h4 class="card-title"style="color:grey;margin-left:150px;font-size:16px;"> SALUT! IMOLUXE est avec vous</h4>
+            <p class="card-text form"> {{ form (form)}}</p>
+          </div>
+        </div>
+        </div>
+   {% endblock %}
